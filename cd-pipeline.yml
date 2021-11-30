@@ -19,7 +19,7 @@ resources:
 
   pipelines:
   - pipeline: ci-pipeline
-    source: dotnet5-pipeline-azure-devops-ci  
+    source: go-pipeline-azure-devops-ci  
     trigger:
       enabled: true
       branches:
@@ -28,9 +28,9 @@ resources:
 
 variables:
 - group: acr-variable-group
-- template: templates/dotnet/cd-vars-template.yml@templates
+- template: templates/go/cd-vars-template.yml@templates
   parameters:
-      projectName: dotnet5-pipeline-azure-devops
+      projectName: go-pipeline-azure-devops
 - name: k8sNamespace
   value: phippyandfriends
 
@@ -51,4 +51,4 @@ stages:
       runOnce:
         deploy:
           steps:
-          - template: templates/dotnet/cd-steps-template.yml@templates
+          - template: templates/go/cd-steps-template.yml@templates
